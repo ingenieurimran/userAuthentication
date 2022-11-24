@@ -28,7 +28,6 @@ app.use(passport.session());
 // mongoose connect
 
 mongoose.connect(process.env.DB_URI);
-// mongoose.connect('mongodb://localhost:27017/userSecurityDB1')
 // mongoose Schema
 const userSchema = new mongoose.Schema({
   username: String,
@@ -59,8 +58,8 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/google/secrets",
-      userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
+      callbackURL: process.env.CALL_BACK,
+      userProfileURL: process.env.USER_PRO,
     },
     function (accessToken, refreshToken, profile, cb) {
       // console.log(profile)
